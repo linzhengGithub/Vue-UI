@@ -1,17 +1,36 @@
-.g-button {
+.g-button[data-v-41a652] {
   font-size: var(--font-size);
   height: var(--button-height);
   padding: 0 1em;
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
   background: var(--button-bg);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
 }
-.g-button:hover {
+.g-button[data-v-41a652]:hover {
   border-color: var(--border-color-hover);
 }
-.g-button:active {
+.g-button[data-v-41a652]:active {
   border-color: var(--button-active-bg);
 }
-.g-button:focus {
+.g-button[data-v-41a652]:focus {
   outline: none;
+}
+.g-button > .content[data-v-41a652] {
+  order: 2;
+}
+.g-button > .icon[data-v-41a652] {
+  order: 1;
+  margin-right: 0.1em;
+}
+.g-button.icon-right > .content[data-v-41a652] {
+  order: 1;
+}
+.g-button.icon-right > .icon[data-v-41a652] {
+  order: 2;
+  margin-right: 0;
+  margin-left: 0.1em;
 }
