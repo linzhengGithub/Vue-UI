@@ -1,9 +1,8 @@
 <template>
   <button class="g-button" :class="{[`icon-${iconPosition}`]: true}">
 <!--    设置一个动态的class,它接受一个icon-position='right/left',因为这个${iconPosition}变量为right/left时都为true,当为true时,条件成立,进入CSS样式">-->
-    <svg v-if="icon" class="icon">
-      <use :xlink:href=`#i-${icon}`></use>
-    </svg>
+    <g-icon class="icon" v-if="icon" :name="icon"></g-icon>
+<!--    此处icon是button的icon的值-->
     <div class="content">
       <slot/>
     </div>
@@ -16,10 +15,7 @@
       icon:{},
       iconPosition:{
         type: String, //接受的值是字符串
-        default:'left', //默认是left
-        validator(value){
-          return value === 'left' && value === 'right'  //检查器，如果用户输入了不是left/right那么就报一个错
-        }
+        default: 'left', //默认是left
       }
     }
   };
