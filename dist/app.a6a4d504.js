@@ -12434,8 +12434,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = {
-  props: ['icon', 'iconPosition'] //这个组件的props接受2个外部属性
-
+  // props:['icon','iconPosition'] //这个组件的props接受2个外部属性
+  props: {
+    icon: {},
+    iconPosition: {
+      type: String,
+      default: 'left',
+      validator: function validator(value) {
+        return value === 'left' && value === 'right'; //检查器，如果用户输入了不是left/right那么就报一个错
+      }
+    }
+  }
 };
         var $41a652 = exports.default || module.exports;
       

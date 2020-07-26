@@ -10,7 +10,18 @@
   </button>
 </template>
 <script lang="ts">
-  export default {props:['icon','iconPosition'] //这个组件的props接受2个外部属性
+  export default {
+    // props:['icon','iconPosition'] //这个组件的props接受2个外部属性
+    props:{
+      icon:{},
+      iconPosition:{
+        type: String, //接受的值是字符串
+        default:'left', //默认是left
+        validator(value){
+          return value === 'left' && value === 'right'  //检查器，如果用户输入了不是left/right那么就报一个错
+        }
+      }
+    }
   };
 </script>
 <style lang="scss" scoped>
