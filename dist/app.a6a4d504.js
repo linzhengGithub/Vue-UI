@@ -12583,6 +12583,73 @@ render._withStripped = true
       
       }
     })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/button-group.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  //mounted()是一个在页面加载的时候就会完成的函数
+  mounted: function mounted() {
+    //遍历这个组件下面的子元素【$el(是element).children就是元素的孩子】
+    for (var _i = 0, _a = this.$el.children; _i < _a.length; _i++) {
+      var node = _a[_i];
+      var name = node.nodeName.toLowerCase();
+
+      if (name !== 'button') {
+        console.warn("g-button-group\u7684\u5B50\u5143\u7D20\u5E94\u8BE5\u5168\u662Fg-button\uFF0C\u4F60\u8FD9\u91CC\u6709\u4E00\u4E2A" + name); //``反单引号是ES6的写法
+      }
+    }
+  }
+};
+        var $da812a = exports.default || module.exports;
+      
+      if (typeof $da812a === 'function') {
+        $da812a = $da812a.options;
+      }
+    
+        /* template */
+        Object.assign($da812a, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "g-button-group" }, [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-da812a",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$da812a', $da812a);
+          } else {
+            api.reload('$da812a', $da812a);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
 },{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
@@ -12592,11 +12659,15 @@ var _button = _interopRequireDefault(require("./button"));
 
 var _icon = _interopRequireDefault(require("./icon"));
 
+var _buttonGroup = _interopRequireDefault(require("./button-group"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue.default.component('g-button', _button.default);
 
 _vue.default.component('g-icon', _icon.default);
+
+_vue.default.component('g-button-group', _buttonGroup.default);
 
 new _vue.default({
   el: '#app',
@@ -12607,7 +12678,7 @@ new _vue.default({
     loading3: true
   }
 });
-},{"vue":"node_modules/vue/dist/vue.common.js","./button":"src/button.vue","./icon":"src/icon.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"node_modules/vue/dist/vue.common.js","./button":"src/button.vue","./icon":"src/icon.vue","./button-group":"src/button-group.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
