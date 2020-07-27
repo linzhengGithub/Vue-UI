@@ -5,41 +5,28 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Vue UI</title>
-  <style>* {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <style>* {margin: 0;padding: 0;box-sizing: border-box;}
     :root {
-      --button-height: 32px;
-      --font-size: 14px;
-      --button-bg: white;
-      --button-active-bg: #eee;
-      --border-radius: 4px;
-      --color: #333;
-      --border-color: #999;
-      --border-color-hover: #666;
+      --button-height: 32px;--font-size: 14px;--button-bg: white;
+      --button-active-bg: #eee;--border-radius: 4px;--color: #333;
+      --border-color: #999;--border-color-hover: #666;
     }  /*一些根CSS样式*/
-    #app {
-      margin: 20px;
-    }
-    body {
-      font-size: var(--font-size);
-    }
-    .icon {
-      width: 1em;
-      height: 1em;
-    }</style>
+    #app {margin: 20px;}
+    body {font-size: var(--font-size);}
+    .icon {width: 1em;height: 1em;}</style>
 <link rel="stylesheet" href="/app.a6a4d504.css"></head>
 <body>
 <div id="app">
-  <g-button icon="settings" icon-position="left">
+  <g-button icon="settings" icon-position="left" :loading="loading1" @click="loading1 = !loading1">
+    <!--    :的作用，:loading="true"是绑定JS的true，如果不加就是字符串的true,loading1是绑在app.js上面的全局变量-->
     按钮
   </g-button>
-  <g-button icon="settings" icon-position="right">
+  <g-button icon="settings" icon-position="right" :loading="loading2" @click="loading2 = !loading2">
     按钮
   </g-button>
-  <g-icon name="right"></g-icon>
+  <g-button :loading="loading3" @click="loading3 = !loading3">
+    按钮
+  </g-button>
 </div>
 </body>
 <script src="/app.a6a4d504.js"></script>

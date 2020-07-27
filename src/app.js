@@ -7,4 +7,10 @@ Vue.component('g-icon',Icon)
 
 new Vue({
   el: '#app',
+  data:{
+    //添加全局初始值
+    loading1:false,
+    loading2:true,
+    loading3:true,
+  }
 })
