@@ -12467,6 +12467,8 @@ exports.default = {
         ? _c("g-icon", { staticClass: "icon", attrs: { name: _vm.icon } })
         : _vm._e(),
       _vm._v(" "),
+      _c("g-icon", { staticClass: "loading", attrs: { name: "loading" } }),
+      _vm._v(" "),
       _c("div", { staticClass: "content" }, [_vm._t("default")], 2)
     ],
     1
@@ -12514,7 +12516,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
   props: {
     name: {}
-  }
+  } //建议写成这种形式
+
 };
         var $328c5f = exports.default || module.exports;
       
@@ -12611,7 +12614,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53356" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61616" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

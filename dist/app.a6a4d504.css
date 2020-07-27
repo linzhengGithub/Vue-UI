@@ -34,6 +34,17 @@
   margin-right: 0;
   margin-left: 0.1em;
 }
+.g-button .loading[data-v-41a652] {
+  animation: spin-data-v-41a652 1s infinite linear;
+}
+@keyframes spin-data-v-41a652 {
+0% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+}
+}
 .g-icon[data-v-328c5f] {
   width: 1em;
   height: 1em;

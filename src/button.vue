@@ -2,7 +2,8 @@
   <button class="g-button" :class="{[`icon-${iconPosition}`]: true}">
 <!--    设置一个动态的class,它接受一个icon-position='right/left',因为这个${iconPosition}变量为right/left时都为true,当为true时,条件成立,进入CSS样式">-->
     <g-icon class="icon" v-if="icon" :name="icon"></g-icon>
-<!--    此处icon是button的icon的值-->
+<!--    此处icon是button的icon的值，:name="icon"加上:里面的icon为一个变量，等着button上面传的icon-->
+    <g-icon class="loading" name="loading"></g-icon>
     <div class="content">
       <slot/>
     </div>
@@ -36,5 +37,9 @@
       >.content{order: 1;}//content的层级为1，<slot>在左边
       >.icon{order: 2; margin-right: 0; margin-left: 0.1em;}//order的层级为2，icon图标在右边
     }
+    .loading{animation: spin 1s infinite linear;} //添加动画spin 1s 无限循环 线性
+  }
+  @keyframes spin {
+    0%{transform: rotate(0deg);} 100%{transform: rotate(360deg);}
   }
 </style>

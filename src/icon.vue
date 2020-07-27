@@ -1,6 +1,7 @@
 <template>
     <svg class="g-icon">
       <use :xlink:href="`#i-${name}`"></use>
+<!--      ${name}为一个变量，等组件传一个name="xxx"-->
     </svg>
 </template>
 
@@ -8,7 +9,7 @@
   export default  {
     props: {
       name:{}
-    }
+    }//建议写成这种形式
   }
 </script>
 
