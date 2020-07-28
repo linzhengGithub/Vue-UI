@@ -12427,12 +12427,85 @@ function patchScopedSlots (instance) {
   }
 }
 
-},{}],"src/button.vue":[function(require,module,exports) {
+},{}],"src/icon.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = {
+  props: {
+    name: {}
+  } //建议写成这种形式
+
+};
+        var $328c5f = exports.default || module.exports;
+      
+      if (typeof $328c5f === 'function') {
+        $328c5f = $328c5f.options;
+      }
+    
+        /* template */
+        Object.assign($328c5f, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("svg", { staticClass: "g-icon" }, [
+    _c("use", { attrs: { "xlink:href": "#i-" + _vm.name } })
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-328c5f",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$328c5f', $328c5f);
+          } else {
+            api.reload('$328c5f', $328c5f);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/button.vue":[function(require,module,exports) {
+"use strict";
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var vue_1 = __importDefault(require("vue"));
+
+var icon_1 = __importDefault(require("./icon"));
+
+vue_1.default.component('g-icon', icon_1.default);
 exports.default = {
   // props:['icon','iconPosition'] //这个组件的props接受2个外部属性
   props: {
@@ -12522,68 +12595,7 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/icon.vue":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = {
-  props: {
-    name: {}
-  } //建议写成这种形式
-
-};
-        var $328c5f = exports.default || module.exports;
-      
-      if (typeof $328c5f === 'function') {
-        $328c5f = $328c5f.options;
-      }
-    
-        /* template */
-        Object.assign($328c5f, (function () {
-          var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("svg", { staticClass: "g-icon" }, [
-    _c("use", { attrs: { "xlink:href": "#i-" + _vm.name } })
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-          return {
-            render: render,
-            staticRenderFns: staticRenderFns,
-            _compiled: true,
-            _scopeId: "data-v-328c5f",
-            functional: undefined
-          };
-        })());
-      
-    /* hot reload */
-    (function () {
-      if (module.hot) {
-        var api = require('vue-hot-reload-api');
-        api.install(require('vue'));
-        if (api.compatible) {
-          module.hot.accept();
-          if (!module.hot.data) {
-            api.createRecord('$328c5f', $328c5f);
-          } else {
-            api.reload('$328c5f', $328c5f);
-          }
-        }
-
-        
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-      }
-    })();
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/button-group.vue":[function(require,module,exports) {
+},{"vue":"node_modules/vue/dist/vue.common.js","./icon":"src/icon.vue","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js"}],"src/button-group.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23742,9 +23754,9 @@ new _vue.default({
 
 _chai.default.use(_chaiSpies.default);
 
-var expect = _chai.default.expect; //测试use里面是不是#i-settings
-
+var expect = _chai.default.expect;
 {
+  //测试button里面的icon的use里面是不是#i-settings
   var Constructor = _vue.default.extend(_button.default); //把Button变成一个构造函数
 
 
@@ -23766,9 +23778,9 @@ var expect = _chai.default.expect; //测试use里面是不是#i-settings
   vm.$el.remove(); //把vm元素删除
 
   vm.$destroy(); //把vm对象删除
-} //测试use里面是不是#i-loading
-
+}
 {
+  //测试button里面的icon的use里面是不是#i-loading
   var _Constructor = _vue.default.extend(_button.default);
 
   var _vm = new _Constructor({
@@ -23789,9 +23801,9 @@ var expect = _chai.default.expect; //测试use里面是不是#i-settings
   _vm.$el.remove();
 
   _vm.$destroy();
-} //测试order1，判断icon在左边
-
+}
 {
+  //测试order1，判断icon在左边
   var div = document.createElement('div'); //创建div
 
   document.body.appendChild(div); //在body里面添加一个div
@@ -23822,9 +23834,9 @@ var expect = _chai.default.expect; //测试use里面是不是#i-settings
   _vm2.$el.remove();
 
   _vm2.$destroy();
-} //测试order2，判断icon在左边
-
+}
 {
+  //测试order2，判断icon在左边
   var _div = document.createElement('div'); //创建div
 
 
@@ -23857,9 +23869,9 @@ var expect = _chai.default.expect; //测试use里面是不是#i-settings
   _vm3.$el.remove();
 
   _vm3.$destroy();
-} //测试button被点击事件
-
+}
 {
+  //测试button被点击事件
   var _Constructor4 = _vue.default.extend(_button.default);
 
   var _vm4 = new _Constructor4({
@@ -23913,7 +23925,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50278" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60239" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

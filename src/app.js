@@ -22,9 +22,8 @@ import chai from 'chai'
 import spies from 'chai-spies'
 chai.use(spies)
 const expect = chai.expect
-//测试use里面是不是#i-settings
-{
-  const Constructor = Vue.extend(Button)//把Button变成一个构造函数
+{//测试button里面的icon的use里面是不是#i-settings
+  const Constructor = Vue.extend(Button) //把Button变成一个构造函数
   const vm = new Constructor({
     //接受属性
     propsData:{
@@ -38,8 +37,7 @@ const expect = chai.expect
   vm.$el.remove() //把vm元素删除
   vm.$destroy() //把vm对象删除
 }
-//测试use里面是不是#i-loading
-{
+{//测试button里面的icon的use里面是不是#i-loading
   const Constructor = Vue.extend(Button)
   const vm = new Constructor({
     propsData:{
@@ -54,8 +52,7 @@ const expect = chai.expect
   vm.$el.remove()
   vm.$destroy()
 }
-//测试order1，判断icon在左边
-{
+{//测试order1，判断icon在左边
   const div = document.createElement('div') //创建div
   document.body.appendChild(div)  //在body里面添加一个div
   const Constructor = Vue.extend(Button)  //把Button变成一个构造函数
@@ -72,8 +69,7 @@ const expect = chai.expect
   vm.$el.remove()
   vm.$destroy()
 }
-//测试order2，判断icon在左边
-{
+{//测试order2，判断icon在左边
   const div = document.createElement('div') //创建div
   document.body.appendChild(div)  //在body里面添加一个div
   const Constructor = Vue.extend(Button)  //把Button变成一个构造函数
@@ -91,8 +87,7 @@ const expect = chai.expect
   vm.$el.remove()
   vm.$destroy()
 }
-//测试button被点击事件
-{
+{//测试button被点击事件
   const Constructor = Vue.extend(Button)
   const vm = new Constructor({
     propsData:{

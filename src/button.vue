@@ -13,6 +13,9 @@
   </button>
 </template>
 <script lang="ts">
+  import Vue from 'vue'
+  import Icon from './icon'
+  Vue.component('g-icon',Icon)
   export default {
     // props:['icon','iconPosition'] //这个组件的props接受2个外部属性
     props:{
