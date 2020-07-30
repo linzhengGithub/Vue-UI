@@ -15,7 +15,7 @@ Vue.component('g-row',Row)
 
 new Vue({
   el: '#app',
-  data:{
+  data: {
     //添加全局初始值
     loading1:false,
     loading2:true,
