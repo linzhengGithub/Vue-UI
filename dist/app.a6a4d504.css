@@ -71,3 +71,36 @@
   position: relative;
   z-index: 1;
 }
+.wrapper[data-v-f06fe3] {
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+}
+.wrapper[data-v-f06fe3] > :not(:last-child) {
+  margin-right: 0.2em;
+}
+.wrapper > input[data-v-f06fe3] {
+  height: 32px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: inherit;
+}
+.wrapper > input[data-v-f06fe3]:hover {
+  border-color: #666;
+}
+.wrapper > input[data-v-f06fe3]:focus {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+.wrapper > input[disabled][data-v-f06fe3], .wrapper > input[readonly][data-v-f06fe3] {
+  border-color: #bbb;
+  color: #bbb;
+  cursor: not-allowed;
+}
+.wrapper.error > input[data-v-f06fe3] {
+  border-color: #F1453D;
+}
+.wrapper .icon-error[data-v-f06fe3] {
+  fill: #F1453D;
+}

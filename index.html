@@ -16,26 +16,39 @@
     #app {margin: 20px;}
     body {font-size: var(--font-size);}
     .icon {width: 1em;height: 1em;}
+    .box{
+      margin: 20px;
+    }
   </style>
 </head>
 <body>
 <div id="app">
-  <g-button icon="settings" icon-position="left" :loading="loading1" @click="loading1 = !loading1">
-    <!--    :的作用，:loading="true"是绑定JS的true，如果不加就是字符串的true,loading1是绑在app.js上面的全局变量-->
-    按钮
-  </g-button>
-  <g-button icon="settings" icon-position="right" :loading="loading2" @click="loading2 = !loading2">
-    按钮
-  </g-button>
-  <g-button :loading="loading3" @click="loading3 = !loading3">
-    按钮
-  </g-button>
-  <g-button-group>
-    <g-button icon="left">上一页</g-button>
-    <g-button icon="right">下一页</g-button>
-  </g-button-group>
+  <div class="box">
+    <g-input value="张三" disabled></g-input>
+    <g-input value="李四" readonly></g-input>
+    <g-input value="王五"></g-input>
+  </div>
+  <div class="box">
+    <g-input value="王五" error="姓名不能少于2个字"></g-input>
+  </div>
+  <div class="box">
+    <g-button icon="settings" icon-position="left" :loading="loading1" @click="loading1 = !loading1">
+      <!--    :的作用，:loading="true"是绑定JS的true，如果不加就是字符串的true,loading1是绑在app.js上面的全局变量-->
+      按钮
+    </g-button>
+    <g-button icon="settings" icon-position="right" :loading="loading2" @click="loading2 = !loading2">
+      按钮
+    </g-button>
+    <g-button :loading="loading3" @click="loading3 = !loading3">
+      按钮
+    </g-button>
+    <g-button-group>
+      <g-button icon="left">上一页</g-button>
+      <g-button icon="right">下一页</g-button>
+    </g-button-group>
+  </div>
 </div>
 </body>
 <script src="./src/app.js"></script>
-<script src="//at.alicdn.com/t/font_1967514_zqcbycn77ab.js"></script>
+<script src="//at.alicdn.com/t/font_1967514_1g634eexbqu.js"></script>
 </html>
