@@ -1,9 +1,13 @@
 <template>
   <div class="wrapper" :class="{error}">
-    <input type="text" :value="value" :disabled="disabled" :readonly="readonly">
+    <input type="text" :value="value" :disabled="disabled" :readonly="readonly"
+           @change="$emit('change',$event)"
+           @input="$emit('input',$event)"
+           @focus="$emit('focus',$event)"
+           @blur="$emit('blur',$event)">
     <template v-if="error">
       <Icon name="error" class="icon-error"></Icon>
-      <span>{{error}}</span>
+      <span class="errorMessage">{{error}}</span>
     </template>
   </div>
 </template>
@@ -17,11 +21,11 @@
       value: {
         type: String
       },
-      disabled: {
+      disabled: {//禁止修改
         type: Boolean,
         default: false
       },
-      readonly: {
+      readonly: {//只读
         type: Boolean,
         default: false
       },
@@ -59,5 +63,6 @@
       > input {border-color: $red;}
     }
     .icon-error {fill: $red;}
+    .errorMessage{color:$red}
   }
 </style>

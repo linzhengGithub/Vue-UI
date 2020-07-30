@@ -104,3 +104,6 @@
 .wrapper .icon-error[data-v-f06fe3] {
   fill: #F1453D;
 }
+.wrapper .errorMessage[data-v-f06fe3] {
+  color: #F1453D;
+}

@@ -12716,14 +12716,30 @@ exports.default = {
     [
       _c("input", {
         attrs: { type: "text", disabled: _vm.disabled, readonly: _vm.readonly },
-        domProps: { value: _vm.value }
+        domProps: { value: _vm.value },
+        on: {
+          change: function($event) {
+            return _vm.$emit("change", $event)
+          },
+          input: function($event) {
+            return _vm.$emit("input", $event)
+          },
+          focus: function($event) {
+            return _vm.$emit("focus", $event)
+          },
+          blur: function($event) {
+            return _vm.$emit("blur", $event)
+          }
+        }
       }),
       _vm._v(" "),
       _vm.error
         ? [
             _c("Icon", { staticClass: "icon-error", attrs: { name: "error" } }),
             _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(_vm.error))])
+            _c("span", { staticClass: "errorMessage" }, [
+              _vm._v(_vm._s(_vm.error))
+            ])
           ]
         : _vm._e()
     ],
@@ -23854,6 +23870,11 @@ new _vue.default({
     loading1: false,
     loading2: true,
     loading3: true
+  },
+  methods: {
+    inputChange: function inputChange(e) {
+      console.log(e.target.value);
+    }
   }
 }); // 单元测试
 
