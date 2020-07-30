@@ -16,10 +16,11 @@ new Vue({
     loading1:false,
     loading2:true,
     loading3:true,
+    message:'王富贵'
   },
   methods: {
     inputChange(e){
-      console.log(e.target.value)
+      console.log(e)
     }
   },
 })

@@ -12719,16 +12719,16 @@ exports.default = {
         domProps: { value: _vm.value },
         on: {
           change: function($event) {
-            return _vm.$emit("change", $event)
+            return _vm.$emit("change", $event.target.value)
           },
           input: function($event) {
-            return _vm.$emit("input", $event)
+            return _vm.$emit("input", $event.target.value)
           },
           focus: function($event) {
-            return _vm.$emit("focus", $event)
+            return _vm.$emit("focus", $event.target.value)
           },
           blur: function($event) {
-            return _vm.$emit("blur", $event)
+            return _vm.$emit("blur", $event.target.value)
           }
         }
       }),
@@ -23869,11 +23869,12 @@ new _vue.default({
     //添加全局初始值
     loading1: false,
     loading2: true,
-    loading3: true
+    loading3: true,
+    message: '王富贵'
   },
   methods: {
     inputChange: function inputChange(e) {
-      console.log(e.target.value);
+      console.log(e);
     }
   }
 }); // 单元测试

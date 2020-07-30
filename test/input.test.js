@@ -52,10 +52,13 @@ describe('Input', () => {
         vm.$on(eventName,callback) //当change/input/focus/blur事件被触发，调用这个监听函数
         //触发input的change事件
         let event = new Event(eventName) //触发了change改变了event
+        Object.defineProperty(
+          event,'target',{value:{value:'hi'},enumerable:true}
+        )//让测试支持v-model测试
         const inputElement = vm.$el.querySelector('input')  //找到input
         inputElement.dispatchEvent(event) // 模拟event发生变化
         console.log(eventName)
-        expect(callback).to.have.been.calledWith(event) //期待callback被调用
+        expect(callback).to.have.been.calledWith('hi') //期待callback被调用
       })
     })
   })
