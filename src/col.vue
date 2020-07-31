@@ -1,9 +1,6 @@
 <template>
-  <div class="col" :class="[span && `col-${span}`,offset && `offset-${offset}`]"
-       :style="{paddingLeft: gutter/2+'px',paddingRight: gutter/2+'px'}">
-    <div style="border: 1px solid green;height: 100px">
+  <div class="col" :class="colClass" :style="colStyle">
       <slot></slot>
-    </div>
   </div>
 </template>
 
@@ -22,8 +19,21 @@
         gutter: 0
       }
     },
-    created(): void {},
-    mounted(): void {}
+    computed: {//计算出来的值，一个变量变了，我也要变就用computed，就拿下面的gutter，是会变得，所以data不行，要用computed
+      colClass(){
+        let {span,offset} = this
+        return [
+          span && `col-${span}`,
+          offset && `offset-${offset}`
+        ]
+      },
+      colStyle(){
+        return{
+          paddingLeft: this.gutter/2+'px',
+          paddingRight: this.gutter/2+'px'
+        }
+      }
+    }
   }
   var div = document.createElement('div')
   var childDiv = document.createElement('div')
@@ -33,7 +43,6 @@
 
 <style lang="scss" scoped>
   .col{
-    height: 100px;
     width: 50%;
     $class-prefix: col-;//class前缀
     @for $n from 1 through 24{
