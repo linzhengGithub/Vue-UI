@@ -23,7 +23,6 @@
       offset:{
         type:[Number,String]
       },
-      phone:{type: Object,validator,},
       ipad:{type: Object,validator,},
       narrowPc:{type: Object,validator,},
       pc:{type: Object,validator,},
@@ -34,15 +33,14 @@
     },
     computed: {//计算出来的值，一个变量变了，我也要变就用computed，就拿下面的gutter，是会变得，所以data不行，要用computed
       colClass(){
-        let {span,offset,phone,ipad,narrowPc,pc,widePc} = this
+        let {span,offset,ipad,narrowPc,pc,widePc} = this
         return [
           span && `col-${span}`,
           offset && `offset-${offset}`,
-          ...(phone && [`col-phone-${phone.span}`]),
-          ...(ipad && [`col-ipad-${ipad.span}`]),
-          ...(narrowPc && [`col-narrow-pc-${narrowPc.span}`]),
-          ...(pc && [`col-pc-${pc.span}`]),
-          ...(widePc && [`col-wide-pc-${widePc.span}`]),
+          ...(ipad ? [`col-ipad-${ipad.span}`] : []),
+          ...(narrowPc ? [`col-narrow-pc-${narrowPc.span}`] : []),
+          ...(pc ? [`col-pc-${pc.span}`] : []),
+          ...(widePc ? [`col-wide-pc-${widePc.span}`] : []),
         ]
       },
       colStyle(){
@@ -67,21 +65,7 @@
         margin-left: ($n / 24) * 100%;
       }
     }
-    @media (max-width: 576px) {
-      $class-prefix: col-phone-;//class前缀
-      @for $n from 1 through 24{
-        &.#{$class-prefix}#{$n}{//scss的#和js的$同理
-          width: ($n / 24) * 100%;
-        }
-      }
-      $class-prefix: offset-phone-;//class前缀
-      @for $n from 1 through 24{
-        &.#{$class-prefix}#{$n}{//scss的#和js的$同理
-          margin-left: ($n / 24) * 100%;
-        }
-      }
-    }
-    @media (min-width: 577px) and (max-width: 768px) {
+    @media (min-width: 577px){
       $class-prefix: col-ipad-;//class前缀
       @for $n from 1 through 24{
         &.#{$class-prefix}#{$n}{//scss的#和js的$同理
@@ -95,7 +79,7 @@
         }
       }
     }
-    @media (min-width: 769px) and (max-width: 992px) {
+    @media (min-width: 768px){
       $class-prefix: col-narrow-pc-;//class前缀
       @for $n from 1 through 24{
         &.#{$class-prefix}#{$n}{//scss的#和js的$同理
@@ -109,7 +93,7 @@
         }
       }
     }
-    @media (min-width: 993px) and (max-width: 1200px) {
+    @media (min-width: 992px) {
       $class-prefix: col-pc-;//class前缀
       @for $n from 1 through 24{
         &.#{$class-prefix}#{$n}{//scss的#和js的$同理
@@ -123,14 +107,14 @@
         }
       }
     }
-    @media (min-width: 1201px){
-      $class-prefix: col-wipe-pc-;//class前缀
+    @media (min-width: 1201px) {
+      $class-prefix: col-wide-pc-;//class前缀
       @for $n from 1 through 24{
         &.#{$class-prefix}#{$n}{//scss的#和js的$同理
           width: ($n / 24) * 100%;
         }
       }
-      $class-prefix: offset-wipe-pc-;//class前缀
+      $class-prefix: offset-wide-pc-;//class前缀
       @for $n from 1 through 24{
         &.#{$class-prefix}#{$n}{//scss的#和js的$同理
           margin-left: ($n / 24) * 100%;
