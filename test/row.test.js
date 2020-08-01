@@ -1,5 +1,3 @@
-import Button from '../src/button'
-
 const expect = chai.expect;
 import Vue from 'vue'
 import Row from '../src/row'
@@ -34,7 +32,7 @@ describe('Row', () => {
       expect(getComputedStyle(cols[0]).paddingLeft).to.eq('10px')
       expect(getComputedStyle(cols[1]).paddingRight).to.eq('10px')
       done()
-      div.$el.remove()
+      div.remove()
       div.$destroy()
     })
   })
@@ -49,7 +47,7 @@ describe('Row', () => {
       }).$mount(div)
     const element = vm.$el
     expect(getComputedStyle(element).justifyContent).to.eq('flex-end')
-    div.$el.remove()
-    div.$destroy()
+    div.remove()
+    vm.$destroy()
   })
 })

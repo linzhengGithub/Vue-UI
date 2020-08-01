@@ -27,7 +27,7 @@
         if(!obj){return []} //如果没有的话就就return []
         let array = [] //生成一个数组
         if (obj.span){array.push(`col-${str}${obj.span}`)} //如果有span那么就push进[]
-        if (obj.offset){array.push(`col-${str}${obj.offset}`)}
+        if (obj.offset){array.push(`offset-${str}${obj.offset}`)}
         return array; //返回出array
       }
     },
