@@ -17,30 +17,30 @@
   }
   export default {
     props:{
-      span:{
-        type:[Number,String]
-      },
-      offset:{
-        type:[Number,String]
-      },
-      ipad:{type: Object,validator,},
-      narrowPc:{type: Object,validator,},
-      pc:{type: Object,validator,},
-      widePc:{type: Object,validator,},
+      span:{type:[Number,String]},
+      offset:{type:[Number,String]},
+      ipad:{type: Object,validator,}, narrowPc:{type: Object,validator,}, pc:{type: Object,validator,}, widePc:{type: Object,validator,},
     },
-    data(){
-      return{gutter: 0}
+    data(){return{gutter: 0}},
+    methods:{
+      createClasses(obj,str = ''){ //接受2个参数
+        if(!obj){return []} //如果没有的话就就return []
+        let array = [] //生成一个数组
+        if (obj.span){array.push(`col-${str}${obj.span}`)} //如果有span那么就push进[]
+        if (obj.offset){array.push(`col-${str}${obj.offset}`)}
+        return array; //返回出array
+      }
     },
     computed: {//计算出来的值，一个变量变了，我也要变就用computed，就拿下面的gutter，是会变得，所以data不行，要用computed
       colClass(){
         let {span,offset,ipad,narrowPc,pc,widePc} = this
+        let {createClasses} = this
         return [
-          span && `col-${span}`,
-          offset && `offset-${offset}`,
-          ...(ipad ? [`col-ipad-${ipad.span}`] : []),
-          ...(narrowPc ? [`col-narrow-pc-${narrowPc.span}`] : []),
-          ...(pc ? [`col-pc-${pc.span}`] : []),
-          ...(widePc ? [`col-wide-pc-${widePc.span}`] : []),
+          ...createClasses({span,offset}),
+          ...createClasses(ipad,'ipad-'),//ipad是props，所以回被传一个对象{xxx:xxx}
+          ...createClasses(narrowPc,'narrow-pc-'),
+          ...createClasses(pc,'pc-'),
+          ...createClasses(widePc,'wide-pc-'),
         ]
       },
       colStyle(){
