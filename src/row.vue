@@ -30,7 +30,7 @@
 </script>
 <style lang="scss" scoped>
   .row {
-    display: flex;margin: 0 -10px;
+    display: flex;margin: 0 -10px;flex-wrap: wrap;
     &.align-left{justify-content: start;}
     &.align-right{justify-content: flex-end;}
     &.align-center{justify-content: center;}

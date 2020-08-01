@@ -21,35 +21,21 @@
 <body>
 <div id="app">
   <div>
-    <g-row>
-      <g-col span="6">
-        <g-row align="center">
-          <g-col>1</g-col>
-          <g-col>2</g-col>
-          <g-col>3</g-col>
-        </g-row>
-      </g-col>
-      <g-col span="18">
-        <g-row align="right">
-          <g-col>1</g-col>
-          <g-col>2</g-col>
-          <g-col>3</g-col>
-        </g-row>
-      </g-col>
-    </g-row>
-  </div>
-  <div>
     <g-row gutter="20">
-        <g-col span="8"><g-row align="center">1</g-row></g-col>
-        <g-col span="8"><g-row align="center">1</g-row></g-col>
-        <g-col span="8"><g-row align="center">1</g-row></g-col>
-    </g-row>
-  </div>
-  <div>
-    <g-row gutter="20">
-      <g-col span="8">1</g-col>
-      <g-col span="8">1</g-col>
-      <g-col span="8">1</g-col>
+      <g-col span="4"
+             :phone="{span:24}"
+             :ipad="{span:18}"
+             :narrow-pc="{span:12}"
+             :pc="{span:6}"
+             :wide-pc="{span:2}"
+      >1</g-col>
+      <g-col span="20"
+             :phone="{span:24}"
+             :ipad="{span:6}"
+             :narrow-pc="{span:12}"
+             :pc="{span:18}"
+             :wide-pc="{span:22}"
+      >1</g-col>
     </g-row>
   </div>
   <hr>
