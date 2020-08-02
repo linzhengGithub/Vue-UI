@@ -23,7 +23,16 @@
   </style>
 </head>
 <body>
+<g-layout>
+  <g-header></g-header>
+  <g-content></g-content>
+  <g-footer></g-footer>
+</g-layout>
 <div id="app">
+  <g-row gutter="20">
+    <g-col span="10" offset="2"></g-col>
+    <g-col span="12"></g-col>
+  </g-row>
   <div>
     <g-row>
       <g-col span="24" :ipad="{span:12}" :pc="{span: 8}">
