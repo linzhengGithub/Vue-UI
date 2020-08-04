@@ -3,14 +3,11 @@
     <slot/>
   </div>
 </template>
-
 <script lang="ts">
   export default {
     data(){
       return{
-        layoutClass: {
-          hasSider: false
-        }
+        layoutClass: {hasSider: false}
       }
     },
     mounted(): void {
@@ -22,13 +19,11 @@
     }
   }
 </script>
-
 <style lang="scss" scoped>
   .layout{
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    border: 1px solid red;
     &.hasSider{
       flex-direction: row;
     }
