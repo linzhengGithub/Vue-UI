@@ -11,6 +11,7 @@ import Footer from './footer'
 import Sider from './sider'
 import Layout from './layout'
 import Toast from './toast'
+import plugin from './plugin' //引用
 
 Vue.component('g-button',Button)
 Vue.component('g-icon',Icon)
@@ -24,6 +25,7 @@ Vue.component('g-footer',Footer)
 Vue.component('g-sider',Sider)
 Vue.component('g-layout',Layout)
 Vue.component('g-toast',Toast)
+Vue.use(plugin) //使用
 
 new Vue({
   el: '#app',
@@ -34,9 +36,12 @@ new Vue({
     loading3:true,
     message:'王富贵'
   },
+  created() {
+
+  },
   methods: {
-    inputChange(e){
-      console.log(e)
+    x(){
+      this.$toast('i am x')
     }
   },
 })
