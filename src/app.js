@@ -41,13 +41,14 @@ new Vue({
   },
   methods: {
     showToast(){
-      this.$toast('i am x',{//传的第二个参数，可以选择不传
+      this.$toast('<strong>fuck</strong>',{//传的第二个参数，可以选择不传
         closeButton: {
           text:'知道了',
           callback(){
             console.log('ok')
           }
-        }
+        },
+        enableHtml: true
       })
     }
   },

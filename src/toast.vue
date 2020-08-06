@@ -1,6 +1,8 @@
 <template>
   <div class="toast">
-    <slot></slot>
+    <slot v-if="!enableHtml"></slot>
+    <div v-else v-html="$slots.default[0]"></div>
+<!--    如果没有传enableHtml:true,那么就不会开启还是显示原来的slot-->
     <div class="line"></div>
     <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
   </div>
@@ -24,6 +26,9 @@
             text:'关闭',callback:undefined //默认为undefined，如果外部没有传text，那么text的内容就'关闭'
           }
         }
+      },
+      enableHtml:<Boolean>{
+        default:false
       }
   },
     mounted(): void {
