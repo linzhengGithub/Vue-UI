@@ -41,14 +41,15 @@ new Vue({
   },
   methods: {
     showToast(){
-      this.$toast('很多文字很多文字很多文',{//传的第二个参数，可以选择不传
+      this.$toast('余额不足！请及时充值！',{//传的第二个参数，可以选择不传
         closeButton: {
-          text:'知道了',
+          text:'支付完成',
           callback(){
             console.log('ok')
           }
         },
-        enableHtml: true
+        enableHtml: true,
+        position:'middle'
       })
     }
   },

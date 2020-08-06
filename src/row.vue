@@ -11,7 +11,7 @@
       },
       align: {
         type: String,
-        validator(value){return ['left','right','center'].includes(value)}//检查器，检查align的值是不是这个数组里面的值
+        validator(value){return ['left','right','center'].indexOf(value) >= 0}//检查器，检查align的值是不是这个数组里面的值
       }
     },
     computed:{
