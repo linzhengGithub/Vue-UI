@@ -6,7 +6,7 @@ const createToast = ({Vue,message,propsData,onClose}) =>{
   let toast = new Constructor({propsData}) //接受x参数的所有数据
   toast.$slots.default = [message] //让toast组件里面的slot的内容等于message
   toast.$mount() //挂载到内存里
-  toast.$on('close',onClose)//在点击close的时候 触发onClose
+  toast.$on('close',onClose)//在点击close的时候 触发了'close' 然后回调 触发onClose
   document.body.appendChild(toast.$el) //把toast这个div加载到页面，toast组件里面的元素（把toast组件里面的slot里面的内容添加到页面上）
   return toast //Constructor一个Toast 返回一个toast
 }

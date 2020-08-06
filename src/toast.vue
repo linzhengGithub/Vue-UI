@@ -61,7 +61,7 @@
       },
       close(){
         this.$el.remove()//移除元素
-        this.$emit('close')//触发close
+        this.$emit('close')//toast被关闭的时候 触发'close'
         this.$destroy()//消除绑定的事件等...
       },
       onClickClose(){
