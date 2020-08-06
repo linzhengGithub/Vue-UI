@@ -41,7 +41,7 @@ new Vue({
   },
   methods: {
     showToast(){
-      this.$toast('<strong>fuck</strong>',{//传的第二个参数，可以选择不传
+      this.$toast('很多文字很多文字很多文',{//传的第二个参数，可以选择不传
         closeButton: {
           text:'知道了',
           callback(){
