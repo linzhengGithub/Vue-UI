@@ -61,6 +61,7 @@
       },
       close(){
         this.$el.remove()//移除元素
+        this.$emit('close')//触发close
         this.$destroy()//消除绑定的事件等...
       },
       onClickClose(){
