@@ -37,7 +37,6 @@ new Vue({
     message:'王富贵'
   },
   created() {
-
   },
   methods: {
     showToast(){
@@ -49,7 +48,7 @@ new Vue({
           }
         },
         enableHtml: true,
-        position:'middle'
+        position:'top'
       })
     }
   },
