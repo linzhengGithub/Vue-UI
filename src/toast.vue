@@ -15,11 +15,11 @@
 <script lang="ts">
   export default {
     props:{
-      autoClose:<Boolean>{//存在
-        default:true
-      },
-      autoCloseDelay:<Number>{//出现3s自动消失
-        default: 3
+      autoClose:<Boolean | Number>{//存在
+        default:5,
+        validator(value){
+          return value === false || typeof value === 'number';
+        }
       },
       closeButton:<Object>{
         default(){ //如果default是一个对象，那么default就要写成函数形式
@@ -58,7 +58,7 @@
         if (this.autoClose){//如果这个div出现在页面中，那就说明autoClose为true
           setTimeout(()=>{//3秒后关闭
             this.close()
-          },this.autoCloseDelay * 1000)
+          },this.autoClose * 1000)
         }
       },
       close(){

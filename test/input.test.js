@@ -57,7 +57,6 @@ describe('Input', () => {
         )//让测试支持v-model测试
         const inputElement = vm.$el.querySelector('input')  //找到input
         inputElement.dispatchEvent(event) // 模拟event发生变化
-        console.log(eventName)
         expect(callback).to.have.been.calledWith('hi') //期待callback被调用
       })
     })

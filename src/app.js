@@ -48,7 +48,7 @@ new Vue({
           }
         },
         enableHtml: true,
-        position:'top'
+        position:'top',
       })
     }
   },
