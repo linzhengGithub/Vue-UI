@@ -12,6 +12,11 @@ import Sider from './sider'
 import Layout from './layout'
 import Toast from './toast'
 import plugin from './plugin' //引用
+import Tabs from './tabs'
+import TabsBody from './tabs-body'
+import TabsHead from './tabs-head'
+import TabsItem from './tabs-item'
+import TabsPane from './tabs-pane'
 
 Vue.component('g-button',Button)
 Vue.component('g-icon',Icon)
@@ -26,15 +31,17 @@ Vue.component('g-sider',Sider)
 Vue.component('g-layout',Layout)
 Vue.component('g-toast',Toast)
 Vue.use(plugin) //使用
+Vue.component('g-tabs',Tabs)
+Vue.component('g-tabs-body',TabsBody)
+Vue.component('g-tabs-head',TabsHead)
+Vue.component('g-tabs-item',TabsItem)
+Vue.component('g-tabs-pane',TabsPane)
 
 new Vue({
   el: '#app',
   data: {
     //添加全局初始值
-    loading1:false,
-    loading2:true,
-    loading3:true,
-    message:'王富贵'
+    selectedTab:'b'
   },
   created() {
   },
