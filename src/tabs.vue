@@ -5,6 +5,7 @@
 </template>
 
 <script lang="ts">
+  import Vue from 'vue'
   export default {
     props:{
       selected:<String>{//因为要改变子组件不能直接改变要从父组件上面改变
@@ -15,6 +16,16 @@
         validator(value){
           return ['horizontal','vertical'].indexOf(value) >= 0
         }
+      }
+    },
+    data(){
+      return{
+        eventBus:new Vue() //让eventBus成为一个Vue实例（把eventBus:Vue加到this上去,让event成为一个含有Vue属性的对象）
+      }
+    },
+    provide(){
+      return{
+        eventBus: this.eventBus //provide里面的eventBus是引用实例里面的eventBus,只有provide了eventBus才能给子组件注入inject
       }
     },
     created(): void {
