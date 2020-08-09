@@ -1,9 +1,8 @@
 <template>
   <div class="tabs">
-    <slot/>
+    <slot></slot>
   </div>
 </template>
-
 <script lang="ts">
   import Vue from 'vue'
   export default {
@@ -13,9 +12,7 @@
       },
       direction:<String>{//tabs的 横向 和 纵向
         default:'horizontal',
-        validator(value){
-          return ['horizontal','vertical'].indexOf(value) >= 0
-        }
+        validator(value){return ['horizontal','vertical'].indexOf(value) >= 0}
       }
     },
     data(){
@@ -28,12 +25,12 @@
         eventBus: this.eventBus //provide里面的eventBus是引用实例里面的eventBus,只有provide了eventBus才能给子组件注入inject
       }
     },
-    created(): void {
+    mounted(): void {
+      this.eventBus.$emit('update:selected',this.selected) //告诉所有子孙，this.selected被选中了(广播了事件)
       // this.$emit('update:selected','xxx') 只有在某一时候触发这个事件，selected.sync才有用
     }
   };
 </script>
-
 <style lang="scss" scoped>
   .tabs {}
 </style>
