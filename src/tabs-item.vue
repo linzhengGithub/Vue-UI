@@ -48,6 +48,7 @@
   .tabs-item {
     line-height: $tab-height;
     padding: 0 1em;
+    cursor: pointer;
     &.active{
       background: red;
     }
