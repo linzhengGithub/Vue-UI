@@ -26,7 +26,17 @@
       }
     },
     mounted(): void {
-      this.eventBus.$emit('update:selected',this.selected) //告诉所有子孙，this.selected被选中了(广播了事件)
+      //为了找出被选中的item
+      this.$children.forEach((vm)=>{//遍历tabs下面的儿子div，head和body
+        if(vm.$options.name === 'g-tabs-head'){//如果tabs下面儿子的名字是g-tabs-head
+          vm.$children.forEach((childVm)=>{//就遍历g-tabs-head下面的item(childVm)
+            if(childVm.$options.name === 'g-tabs-item' && childVm.$props.name === this.selected){//如果下面item的名字是g-tabs-item，并且item.name等于这个被选中的name
+              //传两个参数，一个是被选中的参数，一个是item(childVm)
+              this.eventBus.$emit('update:selected',this.selected,childVm) //告诉所有子孙，this.selected被选中了(广播了事件)
+            }
+          })
+        }
+      })
       // this.$emit('update:selected','xxx') 只有在某一时候触发这个事件，selected.sync才有用
     }
   };
