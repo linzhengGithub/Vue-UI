@@ -26,6 +26,9 @@
       }
     },
     mounted(): void {
+      if(this.$children.length === 0){
+        console && console.warn && console.warn('tabs的子组件应该是tabs-head和tabs-body')
+      }
       //为了找出被选中的item
       this.$children.forEach((vm)=>{//遍历tabs下面的儿子div，head和body
         if(vm.$options.name === 'g-tabs-head'){//如果tabs下面儿子的名字是g-tabs-head
