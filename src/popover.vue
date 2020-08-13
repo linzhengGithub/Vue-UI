@@ -26,25 +26,31 @@
     },
     methods: {
       positionContent() {
-        document.body.appendChild(this.$refs.contentWrapper);//在document 里面添加内容
-        const {contentWrapper,triggerWrapper} = this.$refs
-        let {width, height, top, left} = triggerWrapper.getBoundingClientRect();
         //因为 为了避免被overflow:hidden 所以 放在document.body里面，然后获取left，top，再加上window.scrollX，window.scrollY
-        if(this.position === 'top'){
-          contentWrapper.style.left = left + window.scrollX + 'px';
-          contentWrapper.style.top = top + window.scrollY + 'px';
-        }else if(this.position === 'bottom'){
-          contentWrapper.style.left = left + window.scrollX + 'px';
-          contentWrapper.style.top = top + height + window.scrollY + 'px';
-        }else if(this.position === 'left'){
-          contentWrapper.style.left = left + window.scrollX + 'px';
-          let {height: height2} = contentWrapper.getBoundingClientRect()
-          contentWrapper.style.top = top + window.scrollY + (height - height2)/2 + 'px';
-        }else if(this.position === 'right'){
-          contentWrapper.style.left = left + window.scrollX + width + 'px';
-          let {height: height2} = contentWrapper.getBoundingClientRect()
-          contentWrapper.style.top = top + window.scrollY + (height - height2)/2 + 'px';
+        const {contentWrapper,triggerWrapper} = this.$refs
+        document.body.appendChild(this.$refs.contentWrapper);//在document 里面添加内容
+        let {width, height, top, left} = triggerWrapper.getBoundingClientRect();
+        let {height: height2} = contentWrapper.getBoundingClientRect()
+        let positions = {
+          top:{
+            left:left + window.scrollX,
+            top:top + window.scrollY
+          },
+          bottom:{
+            left:left + window.scrollX,
+            top:top + height + window.scrollY
+          },
+          left:{
+            left:left + window.scrollX,
+            top:top + window.scrollY + (height - height2)/2
+          },
+          right:{
+            left:left + window.scrollX + width,
+            top:top + window.scrollY + (height - height2)/2
+          }
         }
+        contentWrapper.style.left = positions[this.position].left + 'px'
+        contentWrapper.style.top = positions[this.position].top + 'px'
       },
       onClickDocument(e) {//点击document发生的事情
         //如果点击的是popover的内容，那么第二个就成立就什么都不做，如果点击的是contentWrapper的内容，那么第一个就成立就什么都不做。
@@ -94,8 +100,7 @@
       border: 10px solid transparent;
     }
     &.position-top{
-      transform: translateY(-100%);
-      margin-top: -10px;
+      transform: translateY(-100%);margin-top: -10px;
       &::after,&::before{left: 10px;}
       &::after{top: 100%;border-top-color: white;}
       &::before{top:calc(100% + 0.9px);border-top-color: black;}
@@ -107,8 +112,7 @@
       &::before{bottom:calc(100% + 0.9px);border-bottom-color: black;}
     }
     &.position-left{
-      transform: translateX(-100%);
-      margin-left: -10px;
+      transform: translateX(-100%);margin-left: -10px;
       &::after,&::before{left: 100%;transform: translateY(-50%);top: 50%;}
       &::after{left: 100%;border-left-color: white;}
       &::before{left:calc(100% + 0.9px);border-left-color: black;}
