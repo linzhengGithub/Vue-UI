@@ -27,7 +27,8 @@
       onClickDocument(e) {//点击document发生的事情
         //如果点击的是popover的内容，那么第二个就成立就什么都不做，如果点击的是contentWrapper的内容，那么第一个就成立就什么都不做。
         if (this.$refs.popover &&
-          (this.$refs.contentWrapper === e.target || this.$refs.popover.contains(e.target))) { return; } else {
+          (this.$refs.contetnWrapper === e.target || this.$refs.popover.contains(e.target) || this.$refs.contentWrapper.contains(e.target))) { return; }
+        else {
           this.close();
         }
       },
@@ -64,8 +65,8 @@
   }
   .content-wrapper {
     position: absolute;border: 1px solid $border-color;padding: 0.5em 1em;
-    border-radius: $border-radius;box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-    transform: translateY(-100%);margin-top: -10px;
+    border-radius: $border-radius;background: white;filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+    transform: translateY(-100%);margin-top: -10px;max-width: 20em;word-break: break-all;
     &::after,&::before{
       content: '';display: block;position: absolute;width: 0;height: 0;
       border: 10px solid transparent;left: 10px;
