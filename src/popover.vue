@@ -1,6 +1,6 @@
 <template>
   <div class="popover" @click="onClick" ref="popover">
-    <div ref="contentWrapper" class="content-wrapper" v-if="visible">
+    <div ref="contentWrapper" class="content-wrapper" v-if="visible" :class="{[`position-${position}`]:true}">
       <!--      用户指定的内容-->
       <slot name="content"></slot>
     </div>
@@ -13,16 +13,38 @@
 
 <script lang="ts">
   export default {
+    props:{
+      position:<String>{
+        default:'top',
+        validator(value){
+            return ['top','bottom','left','right'].indexOf(value) >= 0
+        }
+      }
+    },
     data() {
       return {visible: <Boolean>false};
     },
     methods: {
       positionContent() {
         document.body.appendChild(this.$refs.contentWrapper);//在document 里面添加内容
-        let {width, height, top, left} = this.$refs.triggerWrapper.getBoundingClientRect();
+        const {contentWrapper,triggerWrapper} = this.$refs
+        let {width, height, top, left} = triggerWrapper.getBoundingClientRect();
         //因为 为了避免被overflow:hidden 所以 放在document.body里面，然后获取left，top，再加上window.scrollX，window.scrollY
-        this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
-        this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
+        if(this.position === 'top'){
+          contentWrapper.style.left = left + window.scrollX + 'px';
+          contentWrapper.style.top = top + window.scrollY + 'px';
+        }else if(this.position === 'bottom'){
+          contentWrapper.style.left = left + window.scrollX + 'px';
+          contentWrapper.style.top = top + height + window.scrollY + 'px';
+        }else if(this.position === 'left'){
+          contentWrapper.style.left = left + window.scrollX + 'px';
+          let {height: height2} = contentWrapper.getBoundingClientRect()
+          contentWrapper.style.top = top + window.scrollY + (height - height2)/2 + 'px';
+        }else if(this.position === 'right'){
+          contentWrapper.style.left = left + window.scrollX + width + 'px';
+          let {height: height2} = contentWrapper.getBoundingClientRect()
+          contentWrapper.style.top = top + window.scrollY + (height - height2)/2 + 'px';
+        }
       },
       onClickDocument(e) {//点击document发生的事情
         //如果点击的是popover的内容，那么第二个就成立就什么都不做，如果点击的是contentWrapper的内容，那么第一个就成立就什么都不做。
@@ -66,13 +88,37 @@
   .content-wrapper {
     position: absolute;border: 1px solid $border-color;padding: 0.5em 1em;
     border-radius: $border-radius;background: white;filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
-    transform: translateY(-100%);margin-top: -10px;max-width: 20em;word-break: break-all;
+    max-width: 20em;word-break: break-all;
     &::after,&::before{
       content: '';display: block;position: absolute;width: 0;height: 0;
-      border: 10px solid transparent;left: 10px;
+      border: 10px solid transparent;
     }
-    &::after{top: 100%;border-top-color: white;}
-    &::before{top:calc(100% + 0.9px);border-top-color: black;}
+    &.position-top{
+      transform: translateY(-100%);
+      margin-top: -10px;
+      &::after,&::before{left: 10px;}
+      &::after{top: 100%;border-top-color: white;}
+      &::before{top:calc(100% + 0.9px);border-top-color: black;}
+    }
+    &.position-bottom{
+      margin-top: 10px;
+      &::after,&::before{left: 10px;}
+      &::after{bottom: 100%;border-bottom-color: white;}
+      &::before{bottom:calc(100% + 0.9px);border-bottom-color: black;}
+    }
+    &.position-left{
+      transform: translateX(-100%);
+      margin-left: -10px;
+      &::after,&::before{left: 100%;transform: translateY(-50%);top: 50%;}
+      &::after{left: 100%;border-left-color: white;}
+      &::before{left:calc(100% + 0.9px);border-left-color: black;}
+    }
+    &.position-right{
+      margin-left: 10px;
+      &::after,&::before{right: 100%;transform: translateY(-50%);top: 50%;}
+      &::after{right: 100%;border-right-color: white;}
+      &::before{right:calc(100% + 0.9px);border-right-color: black;}
+    }
   }
 
 </style>
