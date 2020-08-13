@@ -1,5 +1,5 @@
 <template>
-  <div class="popover" @click="onClick" ref="popover">
+  <div class="popover" ref="popover">
     <div ref="contentWrapper" class="content-wrapper" v-if="visible" :class="{[`position-${position}`]:true}">
       <!--      用户指定的内容-->
       <slot name="content"></slot>
@@ -16,9 +16,33 @@
     props:{
       position:<String>{
         default:'top',
-        validator(value){
+        validator(value): boolean{
             return ['top','bottom','left','right'].indexOf(value) >= 0
         }
+      },
+      trigger:{
+        default: 'click',
+        validator(value): boolean {
+          return ['click','hover'].indexOf(value) >= 0
+        }
+      }
+    },
+    computed:{
+      openEvent(){
+        if(this.trigger === 'click'){return 'click'}
+        else{return 'mouseenter'}
+      },
+      closeEvent(){
+        if(this.trigger === 'click'){return 'click'}
+        else{return 'mouseleave'}
+      },
+    },
+    mounted(): void {
+      if(this.trigger === 'click'){
+        this.$refs.popover.addEventListener('click',this.onClick)
+      }else{
+        this.$refs.popover.addEventListener('mouseenter',this.open)
+        this.$refs.popover.addEventListener('mouseleave',this.close)
       }
     },
     data() {
