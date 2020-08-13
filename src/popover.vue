@@ -32,22 +32,10 @@
         let {width, height, top, left} = triggerWrapper.getBoundingClientRect();
         let {height: height2} = contentWrapper.getBoundingClientRect()
         let positions = {
-          top:{
-            left:left + window.scrollX,
-            top:top + window.scrollY
-          },
-          bottom:{
-            left:left + window.scrollX,
-            top:top + height + window.scrollY
-          },
-          left:{
-            left:left + window.scrollX,
-            top:top + window.scrollY + (height - height2)/2
-          },
-          right:{
-            left:left + window.scrollX + width,
-            top:top + window.scrollY + (height - height2)/2
-          }
+          top:{left:left + window.scrollX, top:top + window.scrollY},
+          bottom:{left:left + window.scrollX, top:top + height + window.scrollY},
+          left:{left:left + window.scrollX, top:top + window.scrollY + (height - height2)/2},
+          right:{left:left + window.scrollX + width, top:top + window.scrollY + (height - height2)/2}
         }
         contentWrapper.style.left = positions[this.position].left + 'px'
         contentWrapper.style.top = positions[this.position].top + 'px'
