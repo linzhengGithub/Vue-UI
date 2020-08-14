@@ -21,7 +21,8 @@
 <div id="app" style="padding-left: 100px;padding-top:100px; overflow: hidden">
   <g-popover>
     <!--      用户指定的内容应该这么些，slot="xxx"xxx应该和组件里面的slot的name一样的名字-->
-    <template slot="content">
+    <template slot="content" slot-scope="{close}">
+      <div @click="close" style="cursor: pointer">关闭</div>
       <div>
         popover
       </div>

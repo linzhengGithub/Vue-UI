@@ -9,7 +9,7 @@
     let keys = Object.keys(value) //得到对象里面的keys
     let vaild = true
     keys.forEach( (key) => { //遍历这些keys是不是数组里面的其中一个，如果是就执行，不是就报错
-      if(['span','offset'].indexOf(key) < 0){
+      if(!['span','offset'].includes(key)){
         vaild = false
       }
       return vaild
@@ -34,7 +34,7 @@
     computed: {//计算出来的值，一个变量变了，我也要变就用computed，就拿下面的gutter，是会变得，所以data不行，要用computed
       colClass(){
         let {span,offset,ipad,narrowPc,pc,widePc} = this
-        let {createClasses} = this
+        let createClasses = this.createClasses
         return [
           ...createClasses({span,offset}),
           ...createClasses(ipad,'ipad-'),//ipad是props，所以回被传一个对象{xxx:xxx}
@@ -52,7 +52,6 @@
 
 <style lang="scss" scoped>
   .col{
-    border: 1px solid red;
     $class-prefix: col-;//class前缀
     @for $n from 1 through 24{
       &.#{$class-prefix}#{$n}{//scss的#和js的$同理

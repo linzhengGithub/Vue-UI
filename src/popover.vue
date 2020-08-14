@@ -2,7 +2,7 @@
   <div class="popover" ref="popover">
     <div ref="contentWrapper" class="content-wrapper" v-if="visible" :class="{[`position-${position}`]:true}">
       <!--      用户指定的内容-->
-      <slot name="content"></slot>
+      <slot name="content" :close="close"></slot>
     </div>
     <!--    默认插槽-->
     <span ref="triggerWrapper" style="display: inline-block">
@@ -27,15 +27,8 @@
         }
       }
     },
-    computed:{
-      openEvent(){
-        if(this.trigger === 'click'){return 'click'}
-        else{return 'mouseenter'}
-      },
-      closeEvent(){
-        if(this.trigger === 'click'){return 'click'}
-        else{return 'mouseleave'}
-      },
+    data() {
+      return {visible: <Boolean>false};
     },
     mounted(): void {
       if(this.trigger === 'click'){
@@ -44,9 +37,6 @@
         this.$refs.popover.addEventListener('mouseenter',this.open)
         this.$refs.popover.addEventListener('mouseleave',this.close)
       }
-    },
-    data() {
-      return {visible: <Boolean>false};
     },
     methods: {
       positionContent() {
@@ -114,26 +104,26 @@
     &.position-top{
       transform: translateY(-100%);margin-top: -10px;
       &::after,&::before{left: 10px;}
-      &::after{top: 100%;border-top-color: white;}
-      &::before{top:calc(100% + 0.9px);border-top-color: black;}
+      &::after{top: 100%;border-top-color: white;border-bottom:none}
+      &::before{top:calc(100% + 0.9px);border-top-color: black;border-bottom:none}
     }
     &.position-bottom{
       margin-top: 10px;
       &::after,&::before{left: 10px;}
-      &::after{bottom: 100%;border-bottom-color: white;}
-      &::before{bottom:calc(100% + 0.9px);border-bottom-color: black;}
+      &::after{bottom: 100%;border-bottom-color: white;border-top:none}
+      &::before{bottom:calc(100% + 0.9px);border-bottom-color: black;border-top:none}
     }
     &.position-left{
       transform: translateX(-100%);margin-left: -10px;
       &::after,&::before{left: 100%;transform: translateY(-50%);top: 50%;}
-      &::after{left: 100%;border-left-color: white;}
-      &::before{left:calc(100% + 0.9px);border-left-color: black;}
+      &::after{left: 100%;border-left-color: white;border-right:none}
+      &::before{left:calc(100% + 0.9px);border-left-color: black;border-right:none}
     }
     &.position-right{
       margin-left: 10px;
       &::after,&::before{right: 100%;transform: translateY(-50%);top: 50%;}
-      &::after{right: 100%;border-right-color: white;}
-      &::before{right:calc(100% + 0.9px);border-right-color: black;}
+      &::after{right: 100%;border-right-color: white;border-left: none;}
+      &::before{right:calc(100% + 0.9px);border-right-color: black;border-left: none;}
     }
   }
 
