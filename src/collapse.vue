@@ -21,6 +21,9 @@
       this.eventBus.$on('update:selected',(name)=>{
         this.$emit('update:selected',name) //本身触发事件
       })
+      this.$children.forEach((vm)=>{//遍历子组件
+        vm['single'] = this.single //子组件的single等于该组件的single
+      })
     }
   };
 </script>

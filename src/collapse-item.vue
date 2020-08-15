@@ -16,13 +16,18 @@
       name:<String>{}
     },
     data(){
-      return{open:<Boolean>false}
+      return{
+        open:<Boolean>false,
+        single:<Boolean> false
+      }
     },
     inject:['eventBus'],
     mounted(): void {
       this.eventBus && this.eventBus.$on('update:selected',(name)=>{
         if (name !== this.name){
-          this.close()
+          if (this.single){//如果single等于组件默认single:false
+            this.close()
+          }
         }else{
           this.show()
         }
@@ -45,7 +50,6 @@
 <style lang="scss" scoped>
   $border-color:#ddd;$border-radius:4px;
   .collapse-item{
-
     > .title{
       border: 1px solid $border-color;
       margin-top: -1px;margin-left: -1px;margin-right: -1px;
@@ -53,9 +57,7 @@
     }
     > .content{padding: 8px;}
     &:first-child{
-      > .title{
-        border-top-left-radius: $border-radius;border-top-right-radius: $border-radius;
-      }
+      > .title{border-top-left-radius: $border-radius;border-top-right-radius: $border-radius;}
     }
     &:last-child{
       > .title:last-child{
