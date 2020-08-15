@@ -22,27 +22,23 @@
       }
     },
     inject:['eventBus'],
-    mounted(): void {
-      this.eventBus && this.eventBus.$on('update:selected',(name)=>{
-        if (name !== this.name){
-          if (this.single){//如果single等于组件默认single:false
-            this.close()
-          }
+    mounted(): void {//如果eventBus存在，就监听爸爸组件'update:selected'，如果names里面有this.name那么open就是打开的，否则反之
+      this.eventBus && this.eventBus.$on('update:selected',(names)=>{
+        if (names.indexOf(this.name) >= 0){//因为selected是一个数组
+          this.open = true
         }else{
-          this.show()
+          this.open = false
         }
       })
     },
     methods:{
-      toggle(){
-        if (this.open){
-          this.open = false
-        }else{
-          this.eventBus && this.eventBus.$emit('update:selected',this.name)
+      toggle(){//用户点击事件
+        if (this.open){//如果open存在,是true的时候点击就触发'update:removeSelected'，看this.name
+          this.eventBus && this.eventBus.$emit('update:removeSelected',this.name)
+        }else{//如果open不存在,是false的时候点击就触发'update:addSelected'，看this.name
+          this.eventBus && this.eventBus.$emit('update:addSelected',this.name)
         }
       },
-      close(){this.open = false},
-      show(){this.open = true}
     }
   }
 </script>
