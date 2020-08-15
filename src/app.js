@@ -47,7 +47,7 @@ new Vue({
   el: '#app',
   data: {
     //添加全局初始值
-    selectedTab:'b'
+    selectedTab:'3'
   },
   created() {
   },
