@@ -33,14 +33,22 @@
   };
 </script>
 <style lang="scss" scoped>
-  .g-button {font-size: var(--font-size);height: var(--button-height);padding: 0 1em;
-    border-radius: var(--border-radius);border: 1px solid var(--border-color);background: var(--button-bg);
+  $font-size:14px;
+  $button-height:32px;
+  $button-bg:white;
+  $button-active-bg:#eee;
+  $border-radius:4xp;
+  $color:#333;
+  $border-color:#999;
+  $border-color-hover:#666;
+  .g-button {font-size: $font-size;height: $button-height;padding: 0 1em;
+    border-radius: $border-radius;border: 1px solid $border-color;background: $button-bg;
     display: inline-flex;//并称一列可以在元素上设置高度等
     justify-content: center;//纵向居中对齐
     align-items: center;//横向居中对齐
     vertical-align: middle;//解决display: inline-flex的bug，让自己和外部的对其
-    &:hover {border-color: var(--border-color-hover);}
-    &:active {border-color: var(--button-active-bg);}
+    &:hover {border-color: $border-color-hover;}
+    &:active {border-color: $button-active-bg;}
     &:focus {outline: none;}
     > .content{order: 2;}//当icon-position没有给属性的时候 或者 icon-position="left"，<slot>在右边
     >.icon{order: 1; margin-right: 0.1em;}//icon图标在左边

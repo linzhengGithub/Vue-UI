@@ -16,6 +16,7 @@
   }
 </script>
 <style lang="scss" scoped>
+  $border-radius:4xp;
   .g-button-group{
     display: inline-flex;vertical-align: middle;
     > .g-button{
@@ -23,9 +24,9 @@
       //不是第一个
       &:not(:first-child){margin-left: -1px;}
       //第一个
-      &:first-child{border-top-left-radius: var(--border-radius);border-bottom-left-radius: var(--border-radius);}
+      &:first-child{border-top-left-radius: $border-radius;border-bottom-left-radius: $border-radius;}
       //最后一个
-      &:last-child{border-top-right-radius: var(--border-radius);border-bottom-right-radius: var(--border-radius);}
+      &:last-child{border-top-right-radius: $border-radius;border-bottom-right-radius: $border-radius;}
       &:hover{position: relative;z-index: 1;}
     }
   }
