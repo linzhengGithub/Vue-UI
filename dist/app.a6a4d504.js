@@ -13286,8 +13286,17 @@ render._withStripped = true
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+<<<<<<< HEAD
 exports.default = void 0;
 var _default = {
+=======
+<<<<<<< HEAD
+exports.default = void 0;
+var _default = {
+=======
+exports.default = {
+>>>>>>> 95e178e162c760f43e86136d9cca02e21a520c67
+>>>>>>> 2185373cad9b40000da5bd3fab3d6e41ebb5aad1
   data: function data() {
     return {
       layoutClass: {
@@ -13299,7 +13308,14 @@ var _default = {
     var _this = this;
 
     this.$children.forEach(function (vm) {
+<<<<<<< HEAD
       //遍历layout下面的子节点
+=======
+<<<<<<< HEAD
+      //遍历layout下面的子节点
+=======
+>>>>>>> 95e178e162c760f43e86136d9cca02e21a520c67
+>>>>>>> 2185373cad9b40000da5bd3fab3d6e41ebb5aad1
       if (vm.$options.name === 'g-sider') {
         //找出每个子节点的名字，如果等于g-sider那就让layoutClass.hasSider
         _this.layoutClass.hasSider = true;
@@ -13307,7 +13323,14 @@ var _default = {
     });
   }
 };
+<<<<<<< HEAD
 exports.default = _default;
+=======
+<<<<<<< HEAD
+exports.default = _default;
+=======
+>>>>>>> 95e178e162c760f43e86136d9cca02e21a520c67
+>>>>>>> 2185373cad9b40000da5bd3fab3d6e41ebb5aad1
         var $d8f99f = exports.default || module.exports;
       
       if (typeof $d8f99f === 'function') {
@@ -14100,8 +14123,18 @@ exports.default = {
       this.$nextTick(function () {
         _this.positionContent(); //定位contentWrapper内容的范围
         //添加监听document click事件
+<<<<<<< HEAD
 
 
+=======
+<<<<<<< HEAD
+
+
+=======
+
+
+>>>>>>> 95e178e162c760f43e86136d9cca02e21a520c67
+>>>>>>> 2185373cad9b40000da5bd3fab3d6e41ebb5aad1
         document.addEventListener('click', _this.onClickDocument); //添加 document click事件 然后 click document触发onClickDocument函数
       });
     },
@@ -14551,7 +14584,15 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+<<<<<<< HEAD
   var ws = new WebSocket(protocol + '://' + hostname + ':' + "65101" + '/');
+=======
+<<<<<<< HEAD
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62455" + '/');
+=======
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50387" + '/');
+>>>>>>> 95e178e162c760f43e86136d9cca02e21a520c67
+>>>>>>> 2185373cad9b40000da5bd3fab3d6e41ebb5aad1
 
   ws.onmessage = function (event) {
     checkedAssets = {};
