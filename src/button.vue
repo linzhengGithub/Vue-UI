@@ -33,14 +33,8 @@
   };
 </script>
 <style lang="scss" scoped>
-  $font-size:14px;
-  $button-height:32px;
-  $button-bg:white;
-  $button-active-bg:#eee;
-  $border-radius:4xp;
-  $color:#333;
-  $border-color:#999;
-  $border-color-hover:#666;
+  $font-size:14px;  $button-height:32px;  $button-bg:white;  $button-active-bg:#eee;
+  $border-radius:4px;  $color:#333;  $border-color:#999;  $border-color-hover:#666;
   .g-button {font-size: $font-size;height: $button-height;padding: 0 1em;
     border-radius: $border-radius;border: 1px solid $border-color;background: $button-bg;
     display: inline-flex;//并称一列可以在元素上设置高度等

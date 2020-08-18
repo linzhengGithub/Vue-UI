@@ -10,41 +10,19 @@
       --button-height: 32px;--font-size: 14px;--button-bg: white;
       --button-active-bg: #eee;--border-radius: 4px;--color: #333;
       --border-color: #999;--border-color-hover: #666;
-    }  /*一些根CSS样式*/
-    #app {margin: 20px;}
-    body {font-size: var(--font-size);}
-    .icon {width: 1em;height: 1em;}
-    .box{
-      margin: 20px;
-    }</style>
+    }
+    /*一些根CSS样式*/
+    body {font-size: var(--font-size);}</style>
 <link rel="stylesheet" href="/app.a6a4d504.css"></head>
 <body>
-<div id="app">
-  <div class="box">
-    <g-input value="张三" disabled=""></g-input>
-    <g-input value="李四" readonly=""></g-input>
-    <g-input v-model="message"></g-input>
-    <p>{{message}}</p>
-  </div>
-  <div class="box">
-    <g-input value="王五" error="姓名不能少于2个字" @change="inputChange"></g-input>
-  </div>
-  <div class="box">
-    <g-button icon="settings" icon-position="left" :loading="loading1" @click="loading1 = !loading1">
-      <!--    :的作用，:loading="true"是绑定JS的true，如果不加就是字符串的true,loading1是绑在app.js上面的全局变量-->
-      按钮
-    </g-button>
-    <g-button icon="settings" icon-position="right" :loading="loading2" @click="loading2 = !loading2">
-      按钮
-    </g-button>
-    <g-button :loading="loading3" @click="loading3 = !loading3">
-      按钮
-    </g-button>
-    <g-button-group>
-      <g-button icon="left">上一页</g-button>
-      <g-button icon="right">下一页</g-button>
-    </g-button-group>
-  </div>
+<div id="app" style="padding:100px">
+  <g-collapse :selected.sync="selectedTab">
+    <g-collapse-item title="标题1" name="1">内容1</g-collapse-item>
+    <g-collapse-item title="标题2" name="2">内容2</g-collapse-item>
+    <g-collapse-item title="标题3" name="3">内容3</g-collapse-item>
+  </g-collapse>
+  <g-button icon="settings">按钮</g-button>
+  {{selectedTab}}
 </div>
 </body>
 <script src="/app.a6a4d504.js"></script>
