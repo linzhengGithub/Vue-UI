@@ -1,6 +1,8 @@
 ---
-title:Input
+title: Input
 ---
-#  Input
-使用方法
+
+#  输入框
+<ClientOnly>
 <input-demos></input-demos>
+</ClientOnly>

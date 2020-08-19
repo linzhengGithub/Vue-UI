@@ -13286,17 +13286,8 @@ render._withStripped = true
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-<<<<<<< HEAD
 exports.default = void 0;
 var _default = {
-=======
-<<<<<<< HEAD
-exports.default = void 0;
-var _default = {
-=======
-exports.default = {
->>>>>>> 95e178e162c760f43e86136d9cca02e21a520c67
->>>>>>> 2185373cad9b40000da5bd3fab3d6e41ebb5aad1
   data: function data() {
     return {
       layoutClass: {
@@ -13308,14 +13299,7 @@ exports.default = {
     var _this = this;
 
     this.$children.forEach(function (vm) {
-<<<<<<< HEAD
       //遍历layout下面的子节点
-=======
-<<<<<<< HEAD
-      //遍历layout下面的子节点
-=======
->>>>>>> 95e178e162c760f43e86136d9cca02e21a520c67
->>>>>>> 2185373cad9b40000da5bd3fab3d6e41ebb5aad1
       if (vm.$options.name === 'g-sider') {
         //找出每个子节点的名字，如果等于g-sider那就让layoutClass.hasSider
         _this.layoutClass.hasSider = true;
@@ -13323,14 +13307,7 @@ exports.default = {
     });
   }
 };
-<<<<<<< HEAD
 exports.default = _default;
-=======
-<<<<<<< HEAD
-exports.default = _default;
-=======
->>>>>>> 95e178e162c760f43e86136d9cca02e21a520c67
->>>>>>> 2185373cad9b40000da5bd3fab3d6e41ebb5aad1
         var $d8f99f = exports.default || module.exports;
       
       if (typeof $d8f99f === 'function') {
@@ -13392,12 +13369,14 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
   props: {
     autoClose: {
+      type: [Boolean, Number],
       default: 5,
       validator: function validator(value) {
         return value === false || typeof value === 'number';
       }
     },
     closeButton: {
+      type: Object,
       default: function _default() {
         return {
           text: '关闭',
@@ -13407,12 +13386,14 @@ exports.default = {
       }
     },
     position: {
+      type: String,
       default: top,
       validator: function validator(value) {
         return ['top', 'middle', 'bottom'].indexOf(value) >= 0;
       }
     },
     enableHtml: {
+      type: Boolean,
       default: false
     }
   },
@@ -13613,9 +13594,11 @@ var vue_1 = __importDefault(require("vue"));
 exports.default = {
   props: {
     selected: {
+      type: String,
       required: true
     },
     direction: {
+      type: String,
       default: 'horizontal',
       validator: function validator(value) {
         return ['horizontal', 'vertical'].indexOf(value) >= 0;
@@ -13649,6 +13632,8 @@ exports.default = {
           if (childVm.$options.name === 'g-tabs-item' && childVm.$props.name === _this.selected) {
             //如果下面item的名字是g-tabs-item，并且item.name等于这个被选中的name
             //传两个参数，一个是被选中的参数，一个是item(childVm)
+            console.log(_this.selected);
+
             _this.eventBus.$emit('update:selected', _this.selected, childVm); //告诉所有子孙，this.selected被选中了(广播了事件)
 
           }
@@ -13778,9 +13763,12 @@ exports.default = {
           left = _a.left; //获取这个div元素的width和left
 
 
+      var left2 = _this.$refs.head.getBoundingClientRect().left; // console.log(vm.$el.getBoundingClientRect())
+
+
       _this.$refs.line.style.width = width + "px"; //把获取的元素的width赋给line
 
-      _this.$refs.line.style.left = left + "px"; //把获取的元素的left赋给line
+      _this.$refs.line.style.left = left - left2 + "px";
     });
   }
 };
@@ -13798,7 +13786,7 @@ exports.default = {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "tabs-head" },
+    { ref: "head", staticClass: "tabs-head" },
     [
       _vm._t("default"),
       _vm._v(" "),
@@ -13851,15 +13839,19 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
   data: function data() {
     return {
-      active: false //设置active
-
+      active: {
+        type: Boolean,
+        default: false
+      }
     };
   },
   props: {
     disabled: {
+      type: Boolean,
       default: false
     },
     name: {
+      type: [String, Number],
       required: true
     }
   },
@@ -13960,11 +13952,15 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
   data: function data() {
     return {
-      active: false
+      active: {
+        type: Boolean,
+        default: false
+      }
     };
   },
   props: {
     name: {
+      type: [String, Number],
       required: true
     }
   },
@@ -14047,6 +14043,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
   props: {
     position: {
+      type: String,
       default: 'top',
       validator: function validator(value) {
         return ['top', 'bottom', 'left', 'right'].indexOf(value) >= 0;
@@ -14123,18 +14120,8 @@ exports.default = {
       this.$nextTick(function () {
         _this.positionContent(); //定位contentWrapper内容的范围
         //添加监听document click事件
-<<<<<<< HEAD
 
 
-=======
-<<<<<<< HEAD
-
-
-=======
-
-
->>>>>>> 95e178e162c760f43e86136d9cca02e21a520c67
->>>>>>> 2185373cad9b40000da5bd3fab3d6e41ebb5aad1
         document.addEventListener('click', _this.onClickDocument); //添加 document click事件 然后 click document触发onClickDocument函数
       });
     },
@@ -14242,9 +14229,12 @@ var vue_1 = __importDefault(require("vue"));
 exports.default = {
   props: {
     single: {
+      type: Boolean,
       default: false
     },
-    selected: {} //数组
+    selected: {
+      type: Array
+    } //数组
 
   },
   data: function data() {
@@ -14350,14 +14340,23 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
   props: {
     title: {
+      type: String,
       required: true
     },
-    name: {}
+    name: {
+      type: String
+    }
   },
   data: function data() {
     return {
-      open: false,
-      single: false
+      open: {
+        type: Boolean,
+        default: false
+      },
+      single: {
+        type: Boolean,
+        default: false
+      }
     };
   },
   inject: ['eventBus'],
@@ -14365,12 +14364,7 @@ exports.default = {
     var _this = this;
 
     this.eventBus && this.eventBus.$on('update:selected', function (names) {
-      if (names.indexOf(_this.name) >= 0) {
-        //因为selected是一个数组
-        _this.open = true;
-      } else {
-        _this.open = false;
-      }
+      _this.open = names.indexOf(_this.name) >= 0;
     });
   },
   methods: {
@@ -14537,7 +14531,7 @@ new _vue.default({
   el: '#app',
   data: {
     //添加全局初始值
-    selectedTab: ['3']
+    selected: '1'
   },
   created: function created() {},
   methods: {
@@ -14584,15 +14578,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-<<<<<<< HEAD
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65101" + '/');
-=======
-<<<<<<< HEAD
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62455" + '/');
-=======
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50387" + '/');
->>>>>>> 95e178e162c760f43e86136d9cca02e21a520c67
->>>>>>> 2185373cad9b40000da5bd3fab3d6e41ebb5aad1
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49967" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
