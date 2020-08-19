@@ -1,6 +1,6 @@
 module.exports = {
   base:'/Vue-UI/',
-  title: '轱辘 UI Vue',
+  title: '车仑 UI Vue',
   description: '一个好用易上手的UI框架',
   themeConfig: {
     nav: [
