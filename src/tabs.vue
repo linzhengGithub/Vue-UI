@@ -7,10 +7,12 @@
   import Vue from 'vue'
   export default {
     props:{
-      selected:<String>{//因为要改变子组件不能直接改变要从父组件上面改变
+      selected:{//因为要改变子组件不能直接改变要从父组件上面改变
+        type:String,
         required:true
       },
-      direction:<String>{//tabs的 横向 和 纵向
+      direction:{//tabs的 横向 和 纵向
+        type:String,
         default:'horizontal',
         validator(value){return ['horizontal','vertical'].indexOf(value) >= 0}
       }
@@ -25,21 +27,23 @@
         eventBus: this.eventBus //provide里面的eventBus是引用实例里面的eventBus,只有provide了eventBus才能给子组件注入inject
       }
     },
-    mounted(): void {
-      if(this.$children.length === 0){
-        console && console.warn && console.warn('tabs的子组件应该是tabs-head和tabs-body')
+    mounted: function () {
+      if (this.$children.length === 0) {
+        console && console.warn && console.warn('tabs的子组件应该是tabs-head和tabs-body');
       }
       //为了找出被选中的item
-      this.$children.forEach((vm)=>{//遍历tabs下面的儿子div，head和body
-        if(vm.$options.name === 'g-tabs-head'){//如果tabs下面儿子的名字是g-tabs-head
-          vm.$children.forEach((childVm)=>{//就遍历g-tabs-head下面的item(childVm)
-            if(childVm.$options.name === 'g-tabs-item' && childVm.$props.name === this.selected){//如果下面item的名字是g-tabs-item，并且item.name等于这个被选中的name
+      this.$children.forEach((vm) => {//遍历tabs下面的儿子div，head和body
+        if (vm.$options.name === 'g-tabs-head') {//如果tabs下面儿子的名字是g-tabs-head
+          vm.$children.forEach((childVm) => {//就遍历g-tabs-head下面的item(childVm)
+            if (childVm.$options.name === 'g-tabs-item'
+              && childVm.$props.name === this.selected) {//如果下面item的名字是g-tabs-item，并且item.name等于这个被选中的name
               //传两个参数，一个是被选中的参数，一个是item(childVm)
-              this.eventBus.$emit('update:selected',this.selected,childVm) //告诉所有子孙，this.selected被选中了(广播了事件)
+              console.log(this.selected);
+              this.eventBus.$emit('update:selected', this.selected, childVm); //告诉所有子孙，this.selected被选中了(广播了事件)
             }
-          })
+          });
         }
-      })
+      });
       // this.$emit('update:selected','xxx') 只有在某一时候触发这个事件，selected.sync才有用
     }
   };

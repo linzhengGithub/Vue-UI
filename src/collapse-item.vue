@@ -12,23 +12,30 @@
 <script lang="ts">
   export default {
     props:{
-      title:<String>{required:true},
-      name:<String>{}
+      title:{
+        type: String,
+        required:true
+      },
+      name:{
+        type:String
+      }
     },
     data(){
       return{
-        open:<Boolean>false,
-        single:<Boolean> false
+        open:{
+          type:Boolean,
+          default:false,
+        },
+        single:{
+          type:Boolean,
+          default: false
+        }
       }
     },
     inject:['eventBus'],
-    mounted(): void {//如果eventBus存在，就监听爸爸组件'update:selected'，如果names里面有this.name那么open就是打开的，否则反之
+    mounted(){//如果eventBus存在，就监听爸爸组件'update:selected'，如果names里面有this.name那么open就是打开的，否则反之
       this.eventBus && this.eventBus.$on('update:selected',(names)=>{
-        if (names.indexOf(this.name) >= 0){//因为selected是一个数组
-          this.open = true
-        }else{
-          this.open = false
-        }
+        this.open = names.indexOf(this.name) >= 0;
       })
     },
     methods:{

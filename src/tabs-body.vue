@@ -7,7 +7,7 @@
 <script lang="ts">
   export default {
     inject:['eventBus'],//注入eventBus（爷爷组件tabs给的eventBus）
-    created(): void {}
+    created(){}
   };
 </script>
 

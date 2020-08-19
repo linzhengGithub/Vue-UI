@@ -7,8 +7,13 @@
   import Vue from 'vue';
   export default {
     props: {
-      single: <Boolean>{default: false},
-      selected: <Array<string>>{}//数组
+      single:{
+        type:Boolean,
+        default: false
+      },
+      selected:{
+        type: Array
+      }//数组
     },
     data() {
       return {eventBus: new Vue()};
@@ -16,7 +21,7 @@
     provide() {
       return {eventBus: this.eventBus};
     },
-    mounted(): void {
+    mounted(){
       this.eventBus.$emit('update:selected', this.selected);//告诉儿子们，'update:selected'的变化，this.selected被选中
       this.eventBus.$on('update:addSelected',(name)=>{//监听'update:addSelected'（用户想要）
         let selectedCopy = JSON.parse(JSON.stringify(this.selected))//深拷贝最开始this.selected的值

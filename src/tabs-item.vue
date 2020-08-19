@@ -8,14 +8,19 @@
   export default {
     data(){
       return{
-        active:<Boolean>false //设置active
+        active:{ //设置active
+          type:Boolean,
+          default:false
+        }
       }
     },
     props:{
-      disabled:<Boolean>{//禁用
+      disabled:{//禁用
+        type:Boolean,
         default:false
       },
-      name:<String|Number>{
+      name:{
+        type:[String,Number],
         required:true
       }
     },
@@ -28,7 +33,7 @@
       }
     },
     inject:['eventBus'],//注入eventBus（爷爷组件tabs给的eventBus）
-    created(): void {
+    created(){
       if(this.eventBus){
         this.eventBus.$on(
           'update:selected',//监听selected事件

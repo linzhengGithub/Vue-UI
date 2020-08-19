@@ -15,28 +15,34 @@
 <script lang="ts">
   export default {
     props:{
-      autoClose:<Boolean | Number>{//存在
+      autoClose:{//存在
+        type:[Boolean,Number],
         default:5,
         validator(value){
           return value === false || typeof value === 'number';
         }
       },
-      closeButton:<Object>{
+      closeButton:{
+        type: Object,
         default(){ //如果default是一个对象，那么default就要写成函数形式
           return {
             text:'关闭',callback:undefined //默认为undefined，如果外部没有传text，那么text的内容就'关闭'
           }
         }
       },
-      position:<String>{//接受一个position，分别为'top','middle','bottom'中的一个
+      position:{//接受一个position，分别为'top','middle','bottom'中的一个
+        type:String,
         default:top,
         validator(value){//检测器
           return ['top','middle','bottom'].indexOf(value) >= 0
         }
       },
-      enableHtml:<Boolean>{default:false}
+      enableHtml:{
+        type:Boolean,
+        default:false
+      }
   },
-    mounted(): void {
+    mounted(){
       this.execAutoClose()
       this.updateStyles()
     },
@@ -84,7 +90,7 @@
   @keyframes slide-down { 0%{opacity: 0;transform: translateY(-100%);} 100%{opacity: 1;transform: translateY(0%);} }
   @keyframes slide-up{ 0%{opacity: 0;transform: translateY(100%);} 100%{opacity: 1;transform: translateY(0%);} }
   .wrapper{
-    position: fixed;left: 50%;transform: translateX(-50%);//绝对定位，居中
+    position: fixed;left: 50%;transform: translateX(-50%);z-index:30 !important;//绝对定位，居中
     &.position-top{
       top: 0;
       .toast{border-top-left-radius: 0;border-top-right-radius: 0;animation: slide-down 1s;}

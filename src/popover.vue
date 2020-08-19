@@ -14,23 +14,24 @@
 <script lang="ts">
   export default {
     props:{
-      position:<String>{
+      position:{
+        type:String,
         default:'top',
-        validator(value): boolean{
+        validator(value){
             return ['top','bottom','left','right'].indexOf(value) >= 0
         }
       },
       trigger:{
         default: 'click',
-        validator(value): boolean {
+        validator(value){
           return ['click','hover'].indexOf(value) >= 0
         }
       }
     },
     data() {
-      return {visible: <Boolean>false};
+      return {visible:false};
     },
-    mounted(): void {
+    mounted(){
       if(this.trigger === 'click'){
         this.$refs.popover.addEventListener('click',this.onClick)
       }else{
@@ -104,23 +105,23 @@
     &.position-top{
       transform: translateY(-100%);margin-top: -10px;
       &::after,&::before{left: 10px;}
-      &::after{top: 100%;border-top-color: white;border-bottom:none}
-      &::before{top:calc(100% + 0.9px);border-top-color: black;border-bottom:none}
+      &::after{top: 98%;border-top-color: white;border-bottom:none}
+      &::before{top:calc(98% + 0.9px);border-top-color: black;border-bottom:none}
     }
     &.position-bottom{
       margin-top: 10px;
-      &::after,&::before{left: 10px;}
+      &::after,&::before{left: 9px;}
       &::after{bottom: 100%;border-bottom-color: white;border-top:none}
       &::before{bottom:calc(100% + 0.9px);border-bottom-color: black;border-top:none}
     }
     &.position-left{
-      transform: translateX(-100%);margin-left: -10px;
+      transform: translateX(-100%);margin-left: -9px;
       &::after,&::before{left: 100%;transform: translateY(-50%);top: 50%;}
       &::after{left: 100%;border-left-color: white;border-right:none}
       &::before{left:calc(100% + 0.9px);border-left-color: black;border-right:none}
     }
     &.position-right{
-      margin-left: 10px;
+      margin-left: 9px;
       &::after,&::before{right: 100%;transform: translateY(-50%);top: 50%;}
       &::after{right: 100%;border-right-color: white;border-left: none;}
       &::before{right:calc(100% + 0.9px);border-right-color: black;border-left: none;}
