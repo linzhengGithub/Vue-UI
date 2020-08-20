@@ -8,7 +8,7 @@
     <g-icon class="loading icon" v-if="loading" name="loading"></g-icon>
 <!--    v-if如果g-icon上面有loading属性并把值给对了，就出现loading图标-->
     <div class="content">
-      <slot/>
+      <slot></slot>
     </div>
   </button>
 </template>

@@ -6,9 +6,13 @@
 </template>
 
 <script lang="ts">
+  import './svg'
   export default  {
+    name: 'GuluIcon',
     props: {
-      name:{}
+      name:{
+
+      }
     }//建议写成这种形式
   }
 </script>

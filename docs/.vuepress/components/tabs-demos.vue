@@ -11,6 +11,7 @@
       <g-tabs-body>
         <g-tabs-pane name="1">content 1</g-tabs-pane>
         <g-tabs-pane name="2">content 2</g-tabs-pane>
+        <g-tabs-pane name="3">content 3</g-tabs-pane>
       </g-tabs-body>
     </g-tabs>
     <pre><code>{{content}}</code></pre>

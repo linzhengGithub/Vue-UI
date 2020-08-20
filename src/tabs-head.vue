@@ -11,6 +11,7 @@
 
 <script lang="ts">
   export default {
+    name: 'GuluTabsHead',
     inject:['eventBus'],//注入eventBus（爷爷组件tabs给的eventBus）
     mounted() {
       this.eventBus.$on('update:selected',(item, vm) => {//点击的时候再传一个vm，然后拿到vm实例元素

@@ -6,6 +6,7 @@
 
 <script lang="ts">
   export default {
+    name: 'GuluTabsItem',
     data(){
       return{
         active:{ //设置active
