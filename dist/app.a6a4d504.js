@@ -12488,8 +12488,7 @@ exports.default = {
   name: 'GuluIcon',
   props: {
     name: {}
-  } //建议写成这种形式
-
+  }
 };
         var $328c5f = exports.default || module.exports;
       
@@ -12559,11 +12558,9 @@ var icon_1 = __importDefault(require("./icon"));
 
 vue_1.default.component('g-icon', icon_1.default);
 exports.default = {
-  // props:['icon','iconPosition'] //这个组件的props接受2个外部属性
   props: {
     icon: {},
     loading: {
-      //给g-button一个loading值，类型为布尔，默认值是false
       type: Boolean,
       default: false
     },
@@ -14632,7 +14629,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50235" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60261" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

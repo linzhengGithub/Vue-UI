@@ -10,10 +10,8 @@
   export default  {
     name: 'GuluIcon',
     props: {
-      name:{
-
-      }
-    }//建议写成这种形式
+      name:{}
+    }
   }
 </script>
 
